@@ -1,5 +1,8 @@
 import { K8sResourceKind, Selector } from '@openshift-console/dynamic-plugin-sdk';
 
+export const IPAM_MODE_DISABLED = 'Disabled';
+export const VLAN_MODE_ACCESS = 'Access';
+
 export type UserDefinedNetworkAnnotations = {
   description?: string;
 };
@@ -36,12 +39,16 @@ export type UserDefinedNetworkLayer3 = {
 export type UserDefinedNetworkLocalnet = {
   ipam?: {
     lifecycle?: string;
-    mode: 'Disabled';
+    mode: typeof IPAM_MODE_DISABLED;
   };
   mtu?: number;
   physicalNetworkName: string;
   role: UserDefinedNetworkRole;
   subnets?: UserDefinedNetworkSubnet[];
+  vlan?: {
+    access?: { id?: number };
+    mode?: typeof VLAN_MODE_ACCESS;
+  };
 };
 
 export type ClusterUserDefinedNetworkSpec = {

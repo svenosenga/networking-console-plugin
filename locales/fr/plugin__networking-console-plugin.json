@@ -158,6 +158,7 @@
   "Egress rules": "Règles de sortie",
   "Enable {{kind}}": "Activer {{kind}}",
   "Enable the projects for this network have the labels you specified": "Enable the projects for this network have the labels you specified",
+  "Enable this option to tag the VirtualMachine's network traffic with a specific VLAN ID (IEEE 802.1Q), isolating it within a designed virtual network on the physical LAN": "Enable this option to tag the VirtualMachine's network traffic with a specific VLAN ID (IEEE 802.1Q), isolating it within a designed virtual network on the physical LAN",
   "Error": "Erreur",
   "Error details": "Détails de l’erreur",
   "Example: 100": "Exemple: 100",
@@ -443,7 +444,10 @@
   "VirtualMachine networks": "VirtualMachine networks",
   "VirtualMachines in projects that are no longer enrolled will lose connectivity": "VirtualMachines in projects that are no longer enrolled will lose connectivity",
   "VLAN": "VLAN",
+  "VLAN ID": "VLAN ID",
+  "VLAN ID must be between {{min}}-{{max}}": "VLAN ID must be between {{min}}-{{max}}",
   "VLAN tag number": "Numéro de balise VLAN",
+  "VLAN tagging": "VLAN tagging",
   "Weight": "Poids",
   "When omitted, the platform will choose a reasonable default which is subject to change over time.": "When omitted, the platform will choose a reasonable default which is subject to change over time.",
   "When using the OpenShift SDN cluster network provider:": "Lors de l’utilisation du fournisseur de réseau de cluster OpenShift SDN :",
@@ -455,5 +459,6 @@
   "You can select projects from the list or select labels to specify qualifying projects.": "You can select projects from the list or select labels to specify qualifying projects.",
   "You don't have access to this section due to cluster policy.": "Vous n’avez pas accès à cette section en raison de la stratégie de cluster.",
   "You don't have permission to perform this action": "Vous n’êtes pas autorisé à effectuer cette action.",
-  "You must create a Namespace to be able to create projects that begin with 'openshift-', 'kubernetes-', or 'kube-'.": "You must create a Namespace to be able to create projects that begin with 'openshift-', 'kubernetes-', or 'kube-'."
+  "You must create a Namespace to be able to create projects that begin with 'openshift-', 'kubernetes-', or 'kube-'.": "You must create a Namespace to be able to create projects that begin with 'openshift-', 'kubernetes-', or 'kube-'.",
+  "You physical network switch must be configured with a VLAN trunk that is permitted to carry traffic for this specific ID.": "You physical network switch must be configured with a VLAN trunk that is permitted to carry traffic for this specific ID."
 }

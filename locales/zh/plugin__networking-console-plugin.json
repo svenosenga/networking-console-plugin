@@ -155,6 +155,7 @@
   "Egress rules": "Egress 规则",
   "Enable {{kind}}": "启用 {{kind}}",
   "Enable the projects for this network have the labels you specified": "Enable the projects for this network have the labels you specified",
+  "Enable this option to tag the VirtualMachine's network traffic with a specific VLAN ID (IEEE 802.1Q), isolating it within a designed virtual network on the physical LAN": "Enable this option to tag the VirtualMachine's network traffic with a specific VLAN ID (IEEE 802.1Q), isolating it within a designed virtual network on the physical LAN",
   "Error": "错误",
   "Error details": "错误详情",
   "Example: 100": "示例：100",
@@ -440,7 +441,10 @@
   "VirtualMachine networks": "VirtualMachine networks",
   "VirtualMachines in projects that are no longer enrolled will lose connectivity": "VirtualMachines in projects that are no longer enrolled will lose connectivity",
   "VLAN": "VLAN",
+  "VLAN ID": "VLAN ID",
+  "VLAN ID must be between {{min}}-{{max}}": "VLAN ID must be between {{min}}-{{max}}",
   "VLAN tag number": "VLAN 标签号",
+  "VLAN tagging": "VLAN tagging",
   "Weight": "权重",
   "When omitted, the platform will choose a reasonable default which is subject to change over time.": "When omitted, the platform will choose a reasonable default which is subject to change over time.",
   "When using the OpenShift SDN cluster network provider:": "当使用 OpenShift SDN 集群网络供应商时：",
@@ -453,5 +457,6 @@
   "You don't have access to this section due to cluster policy.": "由于集群策略您无法访问此部分。",
   "You don't have permission to perform this action": "您没有执行此操作的权限",
   "You must create a Namespace to be able to create projects that begin with 'openshift-', 'kubernetes-', or 'kube-'.": "You must create a Namespace to be able to create projects that begin with 'openshift-', 'kubernetes-', or 'kube-'.",
+  "You physical network switch must be configured with a VLAN trunk that is permitted to carry traffic for this specific ID.": "You physical network switch must be configured with a VLAN trunk that is permitted to carry traffic for this specific ID.",
   "{{count}} annotation_0": "{{count}} 注解"
 }

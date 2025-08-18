@@ -2,19 +2,26 @@ import React, { FC } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 import {
+  Checkbox,
   Form,
   FormGroup,
-  NumberInput,
   PageSection,
+  Popover,
+  Split,
+  SplitItem,
   TextInput,
   Title,
 } from '@patternfly/react-core';
+import { HelpIcon } from '@patternfly/react-icons';
 import PopoverHelpIcon from '@utils/components/PopoverHelpIcon/PopoverHelpIcon';
 import { useNetworkingTranslation } from '@utils/hooks/useNetworkingTranslation';
+import { VLAN_MODE_ACCESS } from '@utils/resources/udns/types';
+import { isEmpty } from '@utils/utils';
 
-import { VMNetworkForm } from '../constants';
+import { DEFAULT_VLAN_ID, VMNetworkForm } from '../constants';
 
 import BridgeMappingPopover from './BridgeMappingPopover';
+import VLANIDField from './VLANIDField';
 
 const NetworkDefinition: FC = () => {
   const { t } = useNetworkingTranslation();
@@ -49,16 +56,46 @@ const NetworkDefinition: FC = () => {
             control={control}
             name="network.spec.network.localnet.mtu"
             render={({ field: { onChange, value } }) => (
-              <NumberInput
+              <TextInput
                 min={0}
                 onChange={(event) => onChange(event.currentTarget.valueAsNumber)}
-                onMinus={() => onChange(value - 1)}
-                onPlus={() => onChange(value + 1)}
+                type="number"
                 value={value}
               />
             )}
           />
         </FormGroup>
+        <Controller
+          control={control}
+          name="network.spec.network.localnet.vlan"
+          render={({ field: { onChange, value: vlan } }) => (
+            <>
+              <Split hasGutter>
+                <Checkbox
+                  id="vlan-enabled"
+                  isChecked={!isEmpty(vlan?.mode)}
+                  label={t('VLAN tagging')}
+                  onChange={(_, checked) =>
+                    onChange(
+                      checked ? { access: { id: DEFAULT_VLAN_ID }, mode: VLAN_MODE_ACCESS } : null,
+                    )
+                  }
+                />
+                <SplitItem>
+                  <Popover
+                    bodyContent={t(
+                      "Enable this option to tag the VirtualMachine's network traffic with a specific VLAN ID (IEEE 802.1Q), isolating it within a designed virtual network on the physical LAN",
+                    )}
+                  >
+                    <HelpIcon />
+                  </Popover>
+                </SplitItem>
+              </Split>
+
+              {!isEmpty(vlan?.access) && <VLANIDField />}
+            </>
+          )}
+        />
       </Form>
     </PageSection>
   );

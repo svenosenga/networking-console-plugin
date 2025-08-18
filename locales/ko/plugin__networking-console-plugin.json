@@ -155,6 +155,7 @@
   "Egress rules": "송신 규칙",
   "Enable {{kind}}": "{{kind}} 활성화",
   "Enable the projects for this network have the labels you specified": "Enable the projects for this network have the labels you specified",
+  "Enable this option to tag the VirtualMachine's network traffic with a specific VLAN ID (IEEE 802.1Q), isolating it within a designed virtual network on the physical LAN": "Enable this option to tag the VirtualMachine's network traffic with a specific VLAN ID (IEEE 802.1Q), isolating it within a designed virtual network on the physical LAN",
   "Error": "오류",
   "Error details": "오류 정보",
   "Example: 100": "예: 100",
@@ -440,7 +441,10 @@
   "VirtualMachine networks": "VirtualMachine networks",
   "VirtualMachines in projects that are no longer enrolled will lose connectivity": "VirtualMachines in projects that are no longer enrolled will lose connectivity",
   "VLAN": "VLAN",
+  "VLAN ID": "VLAN ID",
+  "VLAN ID must be between {{min}}-{{max}}": "VLAN ID must be between {{min}}-{{max}}",
   "VLAN tag number": "VLAN 태그 번호",
+  "VLAN tagging": "VLAN tagging",
   "Weight": "가중치",
   "When omitted, the platform will choose a reasonable default which is subject to change over time.": "When omitted, the platform will choose a reasonable default which is subject to change over time.",
   "When using the OpenShift SDN cluster network provider:": "OpenShift SDN 클러스터 네트워크 공급자를 사용하여 마이그레이션",
@@ -453,5 +457,6 @@
   "You don't have access to this section due to cluster policy.": "클러스터 정책으로 인해 이 섹션에 액세스할 수 없습니다.",
   "You don't have permission to perform this action": "이 작업을 수행할 수 있는 권한이 없습니다",
   "You must create a Namespace to be able to create projects that begin with 'openshift-', 'kubernetes-', or 'kube-'.": "You must create a Namespace to be able to create projects that begin with 'openshift-', 'kubernetes-', or 'kube-'.",
+  "You physical network switch must be configured with a VLAN trunk that is permitted to carry traffic for this specific ID.": "You physical network switch must be configured with a VLAN trunk that is permitted to carry traffic for this specific ID.",
   "{{count}} annotation_0": "{{count}} 주석"
 }
