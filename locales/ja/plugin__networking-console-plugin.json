@@ -175,6 +175,7 @@
   "Hostname": "ホスト名",
   "Hosts": "ホスト",
   "HostSubnet": "HostSubnet",
+  "I'm aware that if no label is specified, all current and future projects will have access to this network. To prevent this, add labels to the network": "I'm aware that if no label is specified, all current and future projects will have access to this network. To prevent this, add labels to the network",
   "If no namespace selector is provided, pods from all namespaces will be eligible.": "namespace セレクターが指定されていない場合、すべての namespace からの Pod が対象となります。",
   "If no pod selector is provided, the policy will apply to all pods in the namespace.": "Pod セレクターが指定されていない場合、ポリシーは namespace のすべての Pod に適用されます。",
   "If no pod selector is provided, traffic from all pods in eligible namespaces will be allowed.": "Pod セレクターが指定されていない場合、対象となる namespace のすべての Pod からのトラフィックが許可されます。",

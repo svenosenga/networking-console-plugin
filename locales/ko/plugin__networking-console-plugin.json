@@ -175,6 +175,7 @@
   "Hostname": "호스트 이름",
   "Hosts": "호스트",
   "HostSubnet": "HostSubnet",
+  "I'm aware that if no label is specified, all current and future projects will have access to this network. To prevent this, add labels to the network": "I'm aware that if no label is specified, all current and future projects will have access to this network. To prevent this, add labels to the network",
   "If no namespace selector is provided, pods from all namespaces will be eligible.": "네임스페이스 선택기가 제공되지 않으면 모든 네임스페이스의 pod를 사용할 수 있습니다.",
   "If no pod selector is provided, the policy will apply to all pods in the namespace.": "Pod 선택기가 제공되지 않으면 정책이 네임스페이스의 모든 Pod에 적용됩니다.",
   "If no pod selector is provided, traffic from all pods in eligible namespaces will be allowed.": "pod 선택기가 제공되지 않으면 적합한 네임스페이스에 있는 모든 pod의 트래픽이 허용됩니다.",

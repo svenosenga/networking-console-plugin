@@ -175,6 +175,7 @@
   "Hostname": "主机名",
   "Hosts": "主机",
   "HostSubnet": "HostSubnet",
+  "I'm aware that if no label is specified, all current and future projects will have access to this network. To prevent this, add labels to the network": "I'm aware that if no label is specified, all current and future projects will have access to this network. To prevent this, add labels to the network",
   "If no namespace selector is provided, pods from all namespaces will be eligible.": "如果没有提供命名空间选择器，则来自所有命名空间中的 pod 都将是有效的。",
   "If no pod selector is provided, the policy will apply to all pods in the namespace.": "如果没有提供 pod 选择器，策略将应用到命名空间中的所有 pod。",
   "If no pod selector is provided, traffic from all pods in eligible namespaces will be allowed.": "如果没有提供 pod 选择器，则允许来自有效命名空间中的所有 pod 的流量。",

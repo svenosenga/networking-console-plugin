@@ -178,6 +178,7 @@
   "Hostname": "Nom d’hôte",
   "Hosts": "Hôtes",
   "HostSubnet": "HostSubnet",
+  "I'm aware that if no label is specified, all current and future projects will have access to this network. To prevent this, add labels to the network": "I'm aware that if no label is specified, all current and future projects will have access to this network. To prevent this, add labels to the network",
   "If no namespace selector is provided, pods from all namespaces will be eligible.": "Si aucun sélecteur d’espace de noms n’est fourni, les pods de tous les espaces de noms seront éligibles.",
   "If no pod selector is provided, the policy will apply to all pods in the namespace.": "Si aucun sélecteur de pod n’est fourni, la stratégie s’appliquera à tous les pods de l’espace de noms.",
   "If no pod selector is provided, traffic from all pods in eligible namespaces will be allowed.": "Si aucun sélecteur de pod n’est fourni, le trafic provenant de tous les pods dans les espaces de noms éligibles sera autorisé.",
