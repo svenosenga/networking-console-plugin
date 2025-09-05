@@ -18,6 +18,8 @@ import { useNetworkingTranslation } from '@utils/hooks/useNetworkingTranslation'
 import { ClusterUserDefinedNetworkModel } from '@utils/models';
 import { isEmpty } from '@utils/utils';
 
+import { VM_NETWORKS_PATH } from '../constants';
+
 import NetworkDefinition from './components/NetworkDefinition';
 import ProjectMapping from './components/ProjectMapping';
 import { defaultFormValue, VMNetworkForm } from './constants';
@@ -58,6 +60,8 @@ const VMNetworkNewForm: FC = () => {
     }
   };
 
+  const onClose = () => navigate(VM_NETWORKS_PATH);
+
   return (
     <FormProvider {...methods}>
       <Wizard
@@ -75,6 +79,7 @@ const VMNetworkNewForm: FC = () => {
         <WizardStep
           footer={{
             isNextDisabled: isEmpty(name) || isEmpty(bridgeMapping),
+            onClose,
           }}
           id="wizard-network-definition"
           name={t('Network definition')}
@@ -86,6 +91,7 @@ const VMNetworkNewForm: FC = () => {
             isNextDisabled: isSubmitting || emptyProjectList,
             nextButtonProps: { isLoading: isSubmitting },
             nextButtonText: t('Create'),
+            onClose,
           }}
           id="wizard-project-mapping"
           name={t('Project mapping')}
@@ -105,7 +111,7 @@ const VMNetworkNewForm: FC = () => {
                 >
                   <Button
                     onClick={() => {
-                      navigate(`/k8s/cluster/virtualmachine-networks/${name}`);
+                      navigate(`${VM_NETWORKS_PATH}/${name}`);
                       close();
                     }}
                     variant={ButtonVariant.link}

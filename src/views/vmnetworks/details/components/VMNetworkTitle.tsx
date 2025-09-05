@@ -6,6 +6,7 @@ import { useNetworkingTranslation } from '@utils/hooks/useNetworkingTranslation'
 import { getName } from '@utils/resources/shared';
 import { ClusterUserDefinedNetworkKind } from '@utils/resources/udns/types';
 import VMNetworkAction from '@views/vmnetworks/actions/VMNetworkActions';
+import { VM_NETWORKS_PATH } from '@views/vmnetworks/constants';
 
 type VMNetworkTitleProps = {
   network: ClusterUserDefinedNetworkKind;
@@ -17,7 +18,7 @@ const VMNetworkTitle: FC<VMNetworkTitleProps> = ({ network }) => {
   return (
     <DetailsPageTitle
       breadcrumbs={[
-        { name: t('VirtualMachine networks'), to: `/k8s/cluster/virtualmachine-networks` },
+        { name: t('VirtualMachine networks'), to: VM_NETWORKS_PATH },
         { name: t('VirtualMachine network details') },
       ]}
     >

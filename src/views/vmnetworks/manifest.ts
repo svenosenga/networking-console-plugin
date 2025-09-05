@@ -2,6 +2,8 @@ import { EncodedExtension } from '@openshift/dynamic-plugin-sdk-webpack';
 import { HrefNavItem, RoutePage } from '@openshift-console/dynamic-plugin-sdk';
 import { ConsolePluginBuildMetadata } from '@openshift-console/dynamic-plugin-sdk-webpack/lib/build-types';
 
+import { VM_NETWORKS_PATH } from './constants';
+
 export const VMNetworksExtensions: EncodedExtension[] = [
   {
     properties: {
@@ -40,7 +42,7 @@ export const VMNetworksExtensions: EncodedExtension[] = [
       component: {
         $codeRef: 'VMNetworkList',
       },
-      path: ['/k8s/cluster/virtualmachine-networks'],
+      path: [VM_NETWORKS_PATH],
     },
     type: 'console.page/route',
   } as EncodedExtension<RoutePage>,
@@ -49,7 +51,7 @@ export const VMNetworksExtensions: EncodedExtension[] = [
       component: {
         $codeRef: 'VMNetworkPage',
       },
-      path: ['/k8s/cluster/virtualmachine-networks/:name'],
+      path: [`${VM_NETWORKS_PATH}/:name`],
     },
     type: 'console.page/route',
   } as EncodedExtension<RoutePage>,
@@ -58,7 +60,7 @@ export const VMNetworksExtensions: EncodedExtension[] = [
       component: {
         $codeRef: 'VMNetworkNewForm',
       },
-      path: ['/k8s/cluster/virtualmachine-networks/~new'],
+      path: [`${VM_NETWORKS_PATH}/~new`],
     },
     type: 'console.page/route',
   } as EncodedExtension<RoutePage>,

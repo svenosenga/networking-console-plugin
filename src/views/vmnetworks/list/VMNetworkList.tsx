@@ -17,6 +17,8 @@ import { ClusterUserDefinedNetworkModelGroupVersionKind } from '@utils/models';
 import { LOCALNET_TOPOLOGY } from '@utils/resources/udns/constants';
 import { ClusterUserDefinedNetworkKind } from '@utils/resources/udns/types';
 
+import { VM_NETWORKS_PATH } from '../constants';
+
 import VMNetworkRow from './components/VMNetworkRow';
 import useVMNetworkColumns from './hooks/useVMNetworkColumns';
 
@@ -39,7 +41,7 @@ const VMNetworkList: FC = () => {
   const title = t('VirtualMachine networks');
 
   const onCreate = () => {
-    navigate('/k8s/cluster/virtualmachine-networks/~new');
+    navigate(`${VM_NETWORKS_PATH}/~new`);
   };
 
   return (
