@@ -12,6 +12,7 @@ import { ClusterUserDefinedNetworkModel } from '@utils/models';
 import { getName } from '@utils/resources/shared';
 import { ClusterUserDefinedNetworkKind } from '@utils/resources/udns/types';
 import { isEmpty } from '@utils/utils';
+import { VM_NETWORKS_PATH } from '@views/vmnetworks/constants';
 import ProjectMapping from '@views/vmnetworks/form/components/ProjectMapping';
 import { VMNetworkForm } from '@views/vmnetworks/form/constants';
 
@@ -74,7 +75,7 @@ const EditProjectMappingModal: FC<EditProjectMappingModalProps> = ({ closeModal,
                 title={t("Network '{{name}}' has been created successfully.", { name })}
                 variant={AlertVariant.success}
               >
-                <Link to={`/k8s/cluster/virtualmachine-networks/${name}`}>{t('View network')}</Link>
+                <Link to={`${VM_NETWORKS_PATH}/${name}`}>{t('View network')}</Link>
               </Alert>
             </FormGroup>
           )}

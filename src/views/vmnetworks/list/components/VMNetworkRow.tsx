@@ -9,6 +9,7 @@ import { getMTU } from '@utils/resources/udns/selectors';
 import { ClusterUserDefinedNetworkKind } from '@utils/resources/udns/types';
 import { NO_DATA_DASH } from '@utils/utils/constants';
 import VMNetworkAction from '@views/vmnetworks/actions/VMNetworkActions';
+import { VM_NETWORKS_PATH } from '@views/vmnetworks/constants';
 
 import MatchedProjects from './MatchedProjects';
 
@@ -22,7 +23,7 @@ const VMNetworkRow: FC<VMNetworkRowType> = ({ activeColumnIDs, obj }) => {
   return (
     <>
       <TableData activeColumnIDs={activeColumnIDs} id="name">
-        <Link to={`/k8s/cluster/virtualmachine-networks/${name}`}>{name}</Link>
+        <Link to={`${VM_NETWORKS_PATH}/${name}`}>{name}</Link>
       </TableData>
       <TableData activeColumnIDs={activeColumnIDs} id="namespaces">
         <MatchedProjects obj={obj} />
