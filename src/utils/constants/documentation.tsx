@@ -28,73 +28,22 @@ export const DOC_URL_NETWORK_SERVICE = `${KUBE_DOCS}/concepts/services-networkin
 export const DOC_URL_NETWORK_INGRESS = `${KUBE_DOCS}/concepts/services-networking/ingress/`;
 
 export const documentationURLs: documentationURLsType = {
-  applicationHealth: {
-    downstream: 'html/building_applications/application-health',
-    upstream: 'applications/application-health.html',
-  },
-  configuringMonitoring: {
-    downstream:
-      'html/monitoring/configuring-the-monitoring-stack#maintenance-and-support_configuring-the-monitoring-stack',
-    upstream:
-      'monitoring/configuring-the-monitoring-stack.html#maintenance-and-support_configuring-monitoring',
-  },
-  deprecatedDeploymentConfig: {
-    downstream: 'html/building_applications/deployments',
-    upstream: 'applications/deployments/what-deployments-are.html',
-  },
   multipleNetworks: {
-    downstream: 'html/networking/multiple-networks',
+    downstream: 'html/multiple_networks/understanding-multiple-networks',
     upstream: 'networking/multiple_networks/understanding-multiple-networks.html',
   },
   networkPolicy: {
-    downstream: 'html/networking/network-policy#about-network-policy',
+    downstream: 'html/network_security/network-policy#about-network-policy',
     kube: `${KUBE_DOCS}/concepts/services-networking/network-policies/`,
     upstream: 'networking/network_security/network_policy/about-network-policy.html',
   },
-  operators: {
-    downstream: 'html/operators/understanding-operators#olm-what-operators-are',
-    upstream: 'operators/understanding/olm-what-operators-are.html',
-  },
-  pipelines: {
-    downstream: 'html/cicd/pipelines#understanding-openshift-pipelines',
-    upstream: '', // intentionally blank as there is no upstream equivalent
-  },
-  postInstallationMachineConfigurationTasks: {
-    downstream: 'html/post-installation_configuration/index',
-    upstream: 'post_installation_configuration/machine-configuration-tasks.html',
-  },
   primaryUDN: {
-    downstream: 'html/networking/multiple-networks#primary-networks',
+    downstream: 'html/multiple_networks/primary-networks#about-user-defined-networks',
     upstream: 'networking/multiple_networks/primary_networks/about-user-defined-networks.html',
   },
   routes: {
-    downstream: 'html/networking/configuring-routes',
-    upstream: 'networking/routes/route-configuration.html',
-  },
-  understandingUpgradeChannels: {
-    downstream:
-      'html/updating_clusters/understanding-openshift-updates-1#understanding-update-channels-releases',
-    upstream: 'updating/understanding_updates/intro-to-updates.html',
-  },
-  updateService: {
-    downstream:
-      'html/updating_clusters/performing-a-cluster-update#updating-a-cluster-in-a-disconnected-environment',
-    upstream: '', // intentionally blank as there is no upstream equivalent
-  },
-  updateUsingCustomMachineConfigPools: {
-    downstream:
-      'html/updating_clusters/performing-a-cluster-update#update-using-custom-machine-config-pools',
-    upstream: 'updating/updating_a_cluster/update-using-custom-machine-config-pools.html',
-  },
-  usingInsights: {
-    downstream:
-      'html/support/remote-health-monitoring-with-connected-clusters#using-insights-to-identify-issues-with-your-cluster',
-    upstream:
-      'support/remote_health_monitoring/using-insights-to-identify-issues-with-your-cluster.html',
-  },
-  usingRBAC: {
-    downstream: 'html/authentication_and_authorization/using-rbac',
-    upstream: 'authentication/using-rbac.html',
+    downstream: 'html/ingress_and_load_balancing/configuring-routes',
+    upstream: 'networking/ingress_load_balancing/routes/route-configuration.html',
   },
   workingWithProjects: {
     downstream: 'html/building_applications/projects#working-with-projects',
