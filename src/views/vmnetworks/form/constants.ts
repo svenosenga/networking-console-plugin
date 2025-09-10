@@ -29,13 +29,13 @@ export const defaultVMNetwork: ClusterUserDefinedNetworkKind = {
 export type VMNetworkForm = {
   matchLabelCheck: boolean;
   network: ClusterUserDefinedNetworkKind;
-  projectList: boolean;
+  showProjectList: boolean;
 };
 
 export const defaultFormValue: VMNetworkForm = {
   matchLabelCheck: false,
   network: defaultVMNetwork,
-  projectList: true,
+  showProjectList: true,
 };
 
 export const MIN_VLAN_ID = 1;

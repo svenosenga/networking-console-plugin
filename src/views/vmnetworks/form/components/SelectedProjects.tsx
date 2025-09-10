@@ -13,11 +13,11 @@ import {
 } from '@patternfly/react-core';
 import { useNetworkingTranslation } from '@utils/hooks/useNetworkingTranslation';
 import { ProjectGroupVersionKind } from '@utils/hooks/useProjects/constants';
+import useProjectsWithPrimaryUserDefinedLabel from '@utils/hooks/useProjectsWithPrimaryUserDefinedLabel';
 import { getName } from '@utils/resources/shared';
 import { getVMNetworkProjects } from '@utils/resources/vmnetworks/utils';
 
 import { VMNetworkForm } from '../constants';
-import useUDNProjects from '../hook/useUDNProjects';
 
 const SelectedProjects: FC = () => {
   const { t } = useNetworkingTranslation();
@@ -26,7 +26,7 @@ const SelectedProjects: FC = () => {
 
   const vmNetwork = watch('network');
 
-  const [projects] = useUDNProjects();
+  const [projects] = useProjectsWithPrimaryUserDefinedLabel();
 
   const matchingProjects = getVMNetworkProjects(vmNetwork, projects);
 

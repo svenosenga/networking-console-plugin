@@ -29,7 +29,7 @@ const EditProjectMappingModal: FC<EditProjectMappingModalProps> = ({ closeModal,
   const methods = useForm<VMNetworkForm>({
     defaultValues: {
       network: obj,
-      projectList: !isEmpty(obj?.spec?.namespaceSelector?.matchExpressions),
+      showProjectList: !isEmpty(obj?.spec?.namespaceSelector?.matchExpressions),
     },
   });
 
