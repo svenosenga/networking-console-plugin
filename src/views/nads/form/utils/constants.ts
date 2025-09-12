@@ -28,3 +28,5 @@ export const generateDefaultNAD = () => ({
     config: '{}',
   },
 });
+
+export const DEFAULT_MTU = 1500;
