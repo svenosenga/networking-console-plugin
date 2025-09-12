@@ -12,6 +12,7 @@ import { isEmpty } from '@utils/utils';
 import { networkConsole } from '@utils/utils';
 
 import { NetworkAttachmentDefinitionFormInput, NetworkTypeKeys, ovnK8sTopologyKeys } from './types';
+import { DEFAULT_MTU } from './constants';
 
 const buildConfig = (
   formData: NetworkAttachmentDefinitionFormInput,
@@ -46,7 +47,7 @@ const buildConfig = (
     [NetworkTypeKeys.ovnKubernetesSecondaryLocalnet]: {
       cniVersion: '0.4.0',
       excludeSubnets: networkTypeData?.excludeSubnets ?? undefined,
-      mtu: parseInt(networkTypeData?.mtu, 10) || undefined,
+      mtu: parseInt(networkTypeData?.mtu, 10) || DEFAULT_MTU,
       name: networkTypeData?.bridgeMapping,
       netAttachDefName,
       subnets,
@@ -107,7 +108,7 @@ export const fromNADObjToFormData = (
     [NetworkTypeKeys.ovnKubernetesSecondaryLocalnet]: {
       bridgeMapping: configParsed?.name,
       excludeSubnets: configParsed?.excludeSubnets,
-      mtu: configParsed?.mtu?.toString() || '',
+      mtu: (configParsed?.mtu || DEFAULT_MTU)?.toString(),
       subnets: configParsed?.subnets,
       vlanID: configParsed.vlanID?.toString() || '',
     },
