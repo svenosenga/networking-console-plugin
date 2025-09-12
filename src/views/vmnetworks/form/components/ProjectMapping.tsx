@@ -2,7 +2,9 @@ import React, { FC } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 import { Radio, Title } from '@patternfly/react-core';
+import NoProjectReadyForPrimaryUDNAlert from '@utils/components/ProjectsPrimaryUDNAlerts/NoProjectReadyForPrimaryUDNAlert';
 import { useNetworkingTranslation } from '@utils/hooks/useNetworkingTranslation';
+import useProjectsWithPrimaryUserDefinedLabel from '@utils/hooks/useProjectsWithPrimaryUserDefinedLabel';
 
 import { VMNetworkForm } from '../constants';
 
@@ -13,7 +15,12 @@ const ProjectMapping: FC = () => {
   const { t } = useNetworkingTranslation();
   const { control, setValue, watch } = useFormContext<VMNetworkForm>();
 
-  const projectList = watch('projectList');
+  const showProjectList = watch('showProjectList');
+
+  const [projects, loadedProjects, errorLoadingProjects] = useProjectsWithPrimaryUserDefinedLabel();
+
+  const noProjectReadyForPrimaryUDN =
+    loadedProjects && !errorLoadingProjects && projects?.length === 0;
 
   return (
     <>
@@ -24,13 +31,16 @@ const ProjectMapping: FC = () => {
         )}
       </p>
 
+      {noProjectReadyForPrimaryUDN && <NoProjectReadyForPrimaryUDNAlert />}
+
       <Controller
         control={control}
-        name="projectList"
+        name="showProjectList"
         render={({ field: { onChange, value } }) => (
           <Radio
             id="project-list"
             isChecked={value}
+            isDisabled={noProjectReadyForPrimaryUDN}
             label={t('Select projects from list')}
             name="project-list"
             onChange={(_, checked) => {
@@ -41,11 +51,17 @@ const ProjectMapping: FC = () => {
         )}
       />
 
-      {projectList && <ProjectList />}
+      {showProjectList && !noProjectReadyForPrimaryUDN && (
+        <ProjectList
+          errorLoadingProjects={errorLoadingProjects}
+          loadedProjects={loadedProjects}
+          projects={projects}
+        />
+      )}
 
       <Controller
         control={control}
-        name="projectList"
+        name="showProjectList"
         render={({ field: { onChange, value } }) => (
           <Radio
             description={t('Enable the projects for this network have the labels you specified')}
@@ -61,7 +77,7 @@ const ProjectMapping: FC = () => {
         )}
       />
 
-      {!projectList && <ProjectNamespaceSelector />}
+      {!showProjectList && <ProjectNamespaceSelector />}
     </>
   );
 };

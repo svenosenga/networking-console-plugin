@@ -1,21 +1,26 @@
 import React, { FC, useCallback, useMemo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
-import { MatchExpression } from '@openshift-console/dynamic-plugin-sdk';
+import { K8sResourceCommon, MatchExpression } from '@openshift-console/dynamic-plugin-sdk';
 import { SelectOptionProps } from '@patternfly/react-core';
 import Loading from '@utils/components/Loading/Loading';
+import FailedToGetProjectsAlert from '@utils/components/ProjectsPrimaryUDNAlerts/FailedToGetProjectsAlert';
 import SelectMultiTypeahead from '@utils/components/SelectMultiTypeahead/SelectMultiTypeahead';
 import { getName } from '@utils/resources/shared';
 import { PROJECT_LABEL_FOR_MATCH_EXPRESSION } from '@utils/resources/udns/constants';
 
 import { VMNetworkForm } from '../constants';
-import useUDNProjects from '../hook/useUDNProjects';
 
 import SelectedProjects from './SelectedProjects';
 
-const ProjectList: FC = () => {
+type ProjectListProps = {
+  errorLoadingProjects: any;
+  loadedProjects: boolean;
+  projects: K8sResourceCommon[];
+};
+
+const ProjectList: FC<ProjectListProps> = ({ errorLoadingProjects, loadedProjects, projects }) => {
   const { control, watch } = useFormContext<VMNetworkForm>();
-  const [projects, loaded] = useUDNProjects();
 
   const matchExpressions = watch('network.spec.namespaceSelector.matchExpressions');
   const projectOptions = useMemo(
@@ -40,7 +45,9 @@ const ProjectList: FC = () => {
     [],
   );
 
-  if (!loaded) return <Loading />;
+  if (!loadedProjects) return <Loading />;
+
+  if (errorLoadingProjects) return <FailedToGetProjectsAlert error={errorLoadingProjects} />;
 
   return (
     <>

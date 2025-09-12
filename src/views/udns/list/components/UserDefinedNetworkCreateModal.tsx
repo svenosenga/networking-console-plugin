@@ -1,27 +1,25 @@
 import React, { FC, useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Trans } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom-v5-compat';
+import { useNavigate } from 'react-router-dom-v5-compat';
 
 import { k8sCreate, useActiveNamespace } from '@openshift-console/dynamic-plugin-sdk';
 import {
-  Alert,
-  AlertVariant,
   Button,
   ButtonVariant,
-  Label,
   Modal,
   ModalBody,
   ModalFooter,
   ModalHeader,
   ModalVariant,
 } from '@patternfly/react-core';
+import FailedToGetProjectsAlert from '@utils/components/ProjectsPrimaryUDNAlerts/FailedToGetProjectsAlert';
+import NoProjectReadyForPrimaryUDNAlert from '@utils/components/ProjectsPrimaryUDNAlerts/NoProjectReadyForPrimaryUDNAlert';
 import { useNetworkingTranslation } from '@utils/hooks/useNetworkingTranslation';
 import useProjectsWithPrimaryUserDefinedLabel from '@utils/hooks/useProjectsWithPrimaryUserDefinedLabel';
 import { ClusterUserDefinedNetworkModel, UserDefinedNetworkModel } from '@utils/models';
 import { getName, getNamespace, resourcePathFromModel } from '@utils/resources/shared';
 
-import { PRIMARY_USER_DEFINED_LABEL, PROJECT_NAME } from '../constants';
+import { PROJECT_NAME } from '../constants';
 
 import { UDNForm } from './constants';
 import UserDefinedNetworkCreateForm from './UserDefinedNetworkCreateForm';
@@ -42,7 +40,7 @@ const UserDefinedNetworkCreateModal: FC<UserDefinedNetworkCreateModalProps> = ({
   const navigate = useNavigate();
 
   const [activeNamespace] = useActiveNamespace();
-  const [projectsReadyForPrimartUDN, loadedPrimaryUDN, errorLoadingPrimaryUDN] =
+  const [projectsReadyForPrimaryUDN, loadedPrimaryUDN, errorLoadingPrimaryUDN] =
     useProjectsWithPrimaryUserDefinedLabel();
 
   const showFailedToRetrieveProjectsError =
@@ -51,7 +49,7 @@ const UserDefinedNetworkCreateModal: FC<UserDefinedNetworkCreateModalProps> = ({
     !isClusterUDN &&
     !showFailedToRetrieveProjectsError &&
     loadedPrimaryUDN &&
-    projectsReadyForPrimartUDN?.length === 0;
+    projectsReadyForPrimaryUDN?.length === 0;
 
   const methods = useForm<UDNForm>({
     defaultValues: getDefaultUDN(isClusterUDN),
@@ -72,12 +70,12 @@ const UserDefinedNetworkCreateModal: FC<UserDefinedNetworkCreateModalProps> = ({
       return;
     }
 
-    if (projectsReadyForPrimartUDN.some((it) => it?.metadata?.name === activeNamespace)) {
+    if (projectsReadyForPrimaryUDN.some((it) => it?.metadata?.name === activeNamespace)) {
       setValue(PROJECT_NAME, activeNamespace);
-    } else if (projectsReadyForPrimartUDN?.length === 1) {
-      setValue(PROJECT_NAME, projectsReadyForPrimartUDN[0].metadata.name);
+    } else if (projectsReadyForPrimaryUDN?.length === 1) {
+      setValue(PROJECT_NAME, projectsReadyForPrimaryUDN[0].metadata.name);
     }
-  }, [activeNamespace, selectedProject, isClusterUDN, projectsReadyForPrimartUDN, setValue]);
+  }, [activeNamespace, selectedProject, isClusterUDN, projectsReadyForPrimaryUDN, setValue]);
 
   const [error, setIsError] = useState<Error>();
   const submit = async (udn: UDNForm) => {
@@ -110,30 +108,9 @@ const UserDefinedNetworkCreateModal: FC<UserDefinedNetworkCreateModalProps> = ({
       />
       <ModalBody>
         {showFailedToRetrieveProjectsError && (
-          <Alert
-            isInline
-            title={t('Failed to retrieve the list of projects')}
-            variant={AlertVariant.danger}
-          >
-            {errorLoadingPrimaryUDN?.message ?? ''}
-          </Alert>
+          <FailedToGetProjectsAlert error={errorLoadingPrimaryUDN} />
         )}
-        {showNoProjectReadyForPrimaryUDNError && (
-          <Alert
-            isInline
-            title={t('No namespace is configured for a primary user-defined network')}
-            variant={AlertVariant.danger}
-          >
-            <Trans t={t}>
-              At creation time the namespace must be configured with{' '}
-              <Label>{{ label: PRIMARY_USER_DEFINED_LABEL }}</Label> label. Go to{' '}
-              <Link target="_blank" to={`/k8s/cluster/namespaces`}>
-                Namespaces
-              </Link>{' '}
-              to create a new namespace.
-            </Trans>
-          </Alert>
-        )}
+        {showNoProjectReadyForPrimaryUDNError && <NoProjectReadyForPrimaryUDNAlert />}
 
         <FormProvider {...methods}>
           <UserDefinedNetworkCreateForm

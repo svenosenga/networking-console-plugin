@@ -42,10 +42,10 @@ const VMNetworkNewForm: FC = () => {
   const name = watch('network.metadata.name');
   const bridgeMapping = watch('network.spec.network.localnet.physicalNetworkName');
   const namespaceSelector = watch('network.spec.namespaceSelector');
-  const projectList = watch('projectList');
+  const showProjectList = watch('showProjectList');
   const matchLabelCheck = watch('matchLabelCheck');
 
-  const emptyProjectList = projectList
+  const emptyProjectList = showProjectList
     ? isEmpty(namespaceSelector.matchExpressions)
     : !matchLabelCheck && isEmpty(namespaceSelector.matchLabels);
 
