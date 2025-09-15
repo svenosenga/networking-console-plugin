@@ -6,6 +6,9 @@ import { VM_NETWORKS_PATH } from './constants';
 
 export const VMNetworksExtensions: EncodedExtension[] = [
   {
+    flags: {
+      required: ['CAN_LIST_NS'],
+    },
     properties: {
       dataAttributes: {
         'data-quickstart-id': 'qs-nav-vmnetwork',
@@ -21,8 +24,10 @@ export const VMNetworksExtensions: EncodedExtension[] = [
     },
     type: 'console.navigation/href',
   } as EncodedExtension<HrefNavItem>,
-
   {
+    flags: {
+      required: ['CAN_LIST_NS'],
+    },
     properties: {
       dataAttributes: {
         'data-quickstart-id': 'qs-nav-vmnetwork',
