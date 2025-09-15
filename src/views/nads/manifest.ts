@@ -1,6 +1,7 @@
 import { EncodedExtension } from '@openshift/dynamic-plugin-sdk-webpack';
 import {
   DetailsItem,
+  ResourceActionProvider,
   ResourceListPage,
   ResourceNSNavItem,
   RoutePage,
@@ -77,10 +78,20 @@ export const NADsExtensions: EncodedExtension[] = [
     },
     type: 'console.yaml-template',
   } as EncodedExtension<YAMLTemplate>,
+  {
+    properties: {
+      model: NetworkAttachmentDefinitionExtensionModel,
+      provider: {
+        $codeRef: 'useNADsActions',
+      },
+    },
+    type: 'console.action/resource-provider',
+  } as EncodedExtension<ResourceActionProvider>,
 ];
 
 export const NADsExposedModules: ConsolePluginBuildMetadata['exposedModules'] = {
   NetworkAttachmentDefinitionFormPage: './views/nads/form/NetworkAttachmentDefinitionFormPage.tsx',
   NetworkAttachmentDefinitionList: './views/nads/list/NetworkAttachmentDefinitionList.tsx',
   NetworkAttachmentDefintionTypeDetails: './views/nads/details/tabs/details/NADTypeDetails.tsx',
+  useNADsActions: './views/nads/actions/hooks/useNADsActions.tsx',
 };
