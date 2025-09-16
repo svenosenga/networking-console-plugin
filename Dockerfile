@@ -1,5 +1,5 @@
 # Builder container
-FROM registry.ci.openshift.org/ocp/builder:rhel-9-base-nodejs-openshift-4.19 AS build
+FROM registry.access.redhat.com/ubi9/nodejs-18:9.6-1749709214 AS build
 
 # Install yarn
 RUN npm install -g yarn -s &>/dev/null
@@ -13,7 +13,7 @@ USER 0
 RUN yarn install --frozen-lockfile --network-timeout 600000 && yarn build
 
 # Web server container
-FROM registry.ci.openshift.org/ocp/4.19:base-rhel9
+FROM registry.access.redhat.com/ubi9/ubi:9.4
 
 RUN INSTALL_PKGS="nginx" && \
     dnf install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
